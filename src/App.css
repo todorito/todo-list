@@ -12,6 +12,11 @@ html {
 body {
     box-sizing: border-box;
     background: linear-gradient(90deg, #da4453 0%, #89216b 100%);
+    /* background-image: url(https://www.wowpatterns.com/assets/files/resource_images/seamless-pattern-colorful-fish-blue-wave-background.jpg); */
+    /* background-image: url(https://img.freepik.com/free-vector/sea-waves-vector-seamless-abstract-hand-drawn-pattern-wallpaper_1284-42923.jpg?w=740&t=st=1672751020~exp=1672751620~hmac=c9da1936f5b640079ab3babea5026b722e387e6fa7f163d7ba43000a1ab39f86); */
+    /* background-image: url(https://img.freepik.com/free-vector/pattern-with-hand-drawn-fishes_1076-87.jpg?w=740&t=st=1672751129~exp=1672751729~hmac=394578742f36cd30b36256956d0aa0bc9c78aeb6241df5834ae61f9794acfa1e); */
+    /* background-image: url(https://img.freepik.com/free-vector/seafood-fish-chalkboard-seamless-background-pattern-black-with-white-line-drawings-fish-calamari-lobster-crab-sushi-shrimp-prawn-mussel-salmon-steak-herbs_1284-44102.jpg?w=740&t=st=1672751327~exp=1672751927~hmac=5dff486cfe524ae64dfaaeef4319af6539db885944c82c45ecdca4e3d46d8e48); */
+    /* background-image: url(https://img.freepik.com/free-vector/blue-sea-waves-seamless-pattern-vector-illustration-design_1284-42784.jpg?w=740&t=st=1672751485~exp=1672752085~hmac=9fd3df2c502a49eeb80621536039f4ae81ba76a7764596ab3e1cab7474ee7be0); */
 }
 
 .container {
@@ -46,6 +51,8 @@ body {
 
 .todo--item>p {
     margin-right: 1rem;
+    margin-left: 1rem;
+    word-break: break-all;
 }
 
 .btn-item {
@@ -91,6 +98,11 @@ body {
     border-radius: 0 1rem 1rem 0;
 }
 
+.btn--add:hover {
+    background-color: #b22d8d;
+    font-weight: 500;
+}
+
 .todo-form {
     display: flex;
     justify-content: center;
@@ -99,4 +111,10 @@ body {
 .form-input {
     font-size: 2rem;
     width: 50%;
+}
+
+.completed {
+    text-decoration: line-through;
+    text-decoration-color: #da4453;
+    text-decoration-style: wavy;
 }

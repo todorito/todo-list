@@ -1,14 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
-import App from "../App";
-import TodoItem from "./TodoItem";
 
 const TodoForm = function (props) {
     const [input, setInput] = useState(props.edit ? props.edit.value : "");
     const submit = function (e) {
         e.preventDefault();
-        props.addTodo(input);
+        if (props.addTodo) {
+            props.addTodo(input);
+        }
+        if (props.onSubmit) {
+            props.onSubmit(input);
+        }
         setInput("");
-    }
+    };
 
     const inputRef = useRef(null)
 
@@ -19,19 +22,22 @@ const TodoForm = function (props) {
     const inputChange = function (e) {
         setInput(e.target.value);
     }
-    // console.log(props.edit);undefined
+
     return (
         <form onSubmit={submit} className="todo-form">
-            {props.edit ? (<><input
-                type="text"
-                placeholder="Update your note"
-                value={input}
-                onChange={inputChange}
-                className="form-input"
-                name="text"
-                ref={inputRef} />
-                <button className="btn--add">Update</button></>) :
-                (<><input
+            {props.edit ? (
+                <><input
+                    type="text"
+                    placeholder="Update your note"
+                    value={input}
+                    onChange={inputChange}
+                    className="form-input"
+                    name="text"
+                    ref={inputRef} />
+                    <button className="btn--add">Update</button>
+                </>
+            ) : (
+                <><input
                     type="text"
                     placeholder="Add your note"
                     value={input}
@@ -40,11 +46,11 @@ const TodoForm = function (props) {
                     name="text"
                     ref={inputRef}
                 />
-                    <button className="btn--add">Add</button></>)
-            }
-
+                    <button className="btn--add">Add</button>
+                </>
+            )}
         </form>
-    )
-}
+    );
+};
 
 export default TodoForm;

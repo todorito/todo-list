@@ -11,8 +11,6 @@ const arrayOfImages = ['https://www.wowpatterns.com/assets/files/resource_images
     "https://images6.alphacoders.com/838/838426.jpg",
     "https://i.pngimg.me/thumb/f/720/comvecteezy164103.jpg",
     "https://img.freepik.com/free-vector/vintage-nautical-elements-seamless-pattern_225004-989.jpg?w=740&t=st=1672828993~exp=1672829593~hmac=7d6628348bd89e7a18f27164989c8137f5f54855216f467d36583d23e377d651",
-    "https://img.freepik.com/free-vector/flat-design-coral-pattern_23-2148676483.jpg?w=740&t=st=1672829032~exp=1672829632~hmac=5c2e298f186d6763f576b9e553774fec1f63c103dd034af27102663a1f31bc3f",
-    "https://img.freepik.com/free-vector/hand-drawn-whales-dolphins-pattern_1191-469.jpg?w=740&t=st=1672829207~exp=1672829807~hmac=70113ed6861f9383350d95e352431a4dd4125bae7db3dd1eb71edec4242c2162",
     "https://img.freepik.com/premium-vector/seamless-pattern-with-colorful-fish-yellow-background_327997-29.jpg?w=740"
 ];
 
@@ -29,7 +27,7 @@ const App = function () {
         }
         let todo = { id: id, text: text }
         setTodos([todo, ...todos])
-    }
+    };
 
     useEffect(() => {
         localStorage.setItem("notes", JSON.stringify(todos));
@@ -40,12 +38,21 @@ const App = function () {
         setTodos(newTodos);
     }
 
-    // const editTodo = function (obj) {
-    //     console.log(obj.id);
-    //     console.log(obj);
-    //     console.log(obj.value);
-    //     setTodos(prevTodo => prevTodo.map(todo => (todo.id === obj.id ? obj.value : todo)));
-    // }
+    const editTodo = function (obj) {
+        let n_todos = todos.map((todo) => {
+            if (todo.id == obj.id) {
+                return {
+                    id: todo.id,
+                    text: obj.value,
+                    completed: todo.completed || false,
+                };
+            } else {
+                return todo;
+            }
+        });
+        console.log(n_todos, "ntodos");
+        setTodos(n_todos);
+    };
 
     const checkTodo = function (id) {
         let updatedTodos = [...todos].map((todo) => {
@@ -59,15 +66,20 @@ const App = function () {
 
     return (<div className="container">
         <h1 className="heading">Todo-rito List</h1>
-        <TodoForm addTodo={addTodo}
-        // editTodo={editTodo} 
+        <TodoForm
+            addTodo={addTodo}
         />
         {todos.map((todo) => {
-            return (<TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} checkTodo={checkTodo} completed={false}
-            // editTodo={editTodo} 
-            />)
+            return (<TodoItem
+                key={todo.id}
+                todo={todo}
+                deleteTodo={deleteTodo}
+                checkTodo={checkTodo}
+                completed={false}
+                editTodo={editTodo}
+            />);
         })}
-    </div>)
-}
+    </div>);
+};
 
 export default App;

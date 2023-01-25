@@ -21,19 +21,17 @@ body {
 
 .container {
     background-color: aliceblue;
-    padding: 10%;
+    padding: 3% 10% 5% 10%;
     margin: 10% 20%;
     border-radius: 1rem;
     position: relative;
 }
 
 .heading {
+    text-align: center;
     font-size: 4rem;
-    top: 0;
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translate(-50%, 10%);
+    margin-bottom: 2%;
+    margin-top: 2%;
     color: rgb(63, 138, 138);
 }
 
@@ -46,6 +44,7 @@ body {
     margin: 1rem auto;
     border: 1px solid #d2dfe0;
     border-radius: 1rem;
+    overflow: hidden;
     background-color: #d2dfe0;
 }
 
@@ -117,4 +116,18 @@ body {
     text-decoration: line-through;
     text-decoration-color: #da4453;
     text-decoration-style: wavy;
+}
+
+@media (max-width: 600px) {
+    .container {
+        min-height: 100vh;
+        background-color: transparent;
+        margin: 1rem;
+    }
+
+    .heading {
+        background-color: rgba(240, 248, 255, 1);
+        position: sticky;
+        top: 0;
+    }
 }
